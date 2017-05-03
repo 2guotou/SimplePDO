@@ -9,11 +9,15 @@
 3. 调用，如下代码示例 -- 获取Sample表全部数据；
 
 ```php
-Class IndexController extends Yaf_Controller_Abstract{
-	
-	function sampleAction(){
-		$data = SampleModel::instance()->getAll();
-		var_dump($data);
-	}
-}
+include './library/SimplePDO.php';
+
+New SimplePDO("mysql:host=127.0.0.1;port=3306;dbname=test;","user","pass");
+$tables = SimplePDO::instance()->doQuery("show tables;");
+print_r($table);
+
+/* output: Array (
+    [0] => Array (
+        [Tables_in_ad] => table1
+    )
+) */
 ```
